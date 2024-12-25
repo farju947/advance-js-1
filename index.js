@@ -41,16 +41,17 @@ function addTodo() {
             const input = document.createElement('input');
             input.type = 'text';
             input.value = span.textContent;
-            input.className = 'flex-grow p-1 border rounded';
-            li.insertBefore(input, span);
-            li.removeChild(span);
-            editButton.textContent = '💾';  // Save button replaced with 💾 icon
+            input.className = 'flex-grow p-1 border rounded w-full'; // Ensure input takes up full width
+
+            li.insertBefore(input, span);  // Insert input before the span
+            li.removeChild(span);  // Remove the span with text
+            editButton.textContent = '💾';  // Change to Save icon
         } else {
             const input = li.querySelector('input');
-            span.textContent = input.value.trim() || 'Untitled';  // Default 'Untitled' if empty
-            li.insertBefore(span, input);
-            li.removeChild(input);
-            editButton.textContent = '✏️';  // Change back to pencil icon
+            span.textContent = input.value.trim() || 'Untitled';  // Default to 'Untitled' if empty
+            li.insertBefore(span, input);  // Place the span back
+            li.removeChild(input);  // Remove the input field
+            editButton.textContent = '✏️';  // Revert to pencil icon
         }
     });
 
